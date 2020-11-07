@@ -6,7 +6,7 @@ namespace TeachMeSkills.Simulator.Cons
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("");
         }
     }
 }
