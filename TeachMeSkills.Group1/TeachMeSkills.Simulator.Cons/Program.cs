@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TeachMeSkills.Simulator.Cons
 {
@@ -6,7 +7,9 @@ namespace TeachMeSkills.Simulator.Cons
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            Random r = new Random();
+            int value = r.Next(0, 10);
+
         }
     }
-}
+    }
