@@ -10,8 +10,6 @@ namespace TeachMeSkills.Simulator.Core
     {
         public int ProductId { get; set; }
 
-        public readonly string Id = Guid.NewGuid().ToString().ToUpper().Substring(0, 10);
-
         public Name Name { get; set; }
 
         public decimal Price { get; set; }
