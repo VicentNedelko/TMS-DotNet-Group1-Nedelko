@@ -10,12 +10,9 @@ namespace TeachMeSkills.Simulator.Core
 
         public string Name { get; set; }
 
-
         public override string ToString()
         {
             return Name;
         }
-
-        public virtual ICollection<Basket> Baskets { get; set; }
     }
 }

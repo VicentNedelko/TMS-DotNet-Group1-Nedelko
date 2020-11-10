@@ -28,6 +28,5 @@ namespace TeachMeSkills.Simulator.Core
         {
             return $"{BasketId} from {Created.ToString("dd.mm.yy hh:mm")}";
         }
-
     }
 }
