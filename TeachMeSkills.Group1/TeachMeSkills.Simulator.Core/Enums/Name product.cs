@@ -12,6 +12,10 @@ namespace TeachMeSkills.Simulator.Core.Enums
         Product4 = 3,
         Product5 = 4,
         Product6 = 5,
+        Product7 = 6,
+        Product8 = 7,
+        Product9 = 8,
+        Product10 = 9,
 
     }
 }

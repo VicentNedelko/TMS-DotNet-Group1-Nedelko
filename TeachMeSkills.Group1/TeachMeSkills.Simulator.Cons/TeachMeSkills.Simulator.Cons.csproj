@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NEST" Version="7.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TeachMeSkills.Simulator.Core\TeachMeSkills.Simulator.Core.csproj" />
   </ItemGroup>
 
