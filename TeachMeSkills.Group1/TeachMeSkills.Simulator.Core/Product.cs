@@ -10,7 +10,7 @@ namespace TeachMeSkills.Simulator.Core
     {
         public int ProductId { get; set; }
 
-        public Name Name { get; set; }
+        public Name  Name { get; set; }
 
         public decimal Price { get; set; }
 
