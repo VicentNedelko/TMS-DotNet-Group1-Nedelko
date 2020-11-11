@@ -7,19 +7,18 @@ namespace TeachMeSkills.Simulator.Core
 	public class Customer
 	{
 		public string Name { get; set; }
-
-		private const int MaxProductsInBasket = 10;
-
+		public string Id { get; set; }
 		public readonly List<Product> Basket = new List<Product>();
 
 		public Customer()
 		{
 			var random = new Random();
 			int productsToCreate = random.Next(1, 10);
+			Id = Guid.NewGuid().ToString().Substring(0, 5);
 
 			for (int i = 0; i < productsToCreate; i++)
 			{
-				this.Basket.Add(new Product());
+				Basket.Add(new Product());
 			}
 		}
 	}
