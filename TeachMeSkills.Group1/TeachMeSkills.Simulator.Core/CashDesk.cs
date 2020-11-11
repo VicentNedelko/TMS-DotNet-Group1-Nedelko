@@ -11,6 +11,7 @@ namespace TeachMeSkills.Simulator.Core
         public Speed Speed { get; set; }
         public int maxCustomerNumber { get; set; }
         public Queue<Customer> cashDeskQueue { get; set; }
+        public List<TimeSpan> servingTime { get; set; }
         private static Semaphore semaphore = new Semaphore(0, 5);
         private int _count;
         public CashDesk()
