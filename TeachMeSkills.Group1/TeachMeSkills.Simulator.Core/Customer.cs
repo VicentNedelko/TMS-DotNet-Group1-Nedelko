@@ -6,14 +6,7 @@ namespace TeachMeSkills.Simulator.Core
 {
 	public class Customer
 	{
-		public int CustomerId { get; set; }
-
 		public string Name { get; set; }
-
-		public override string ToString()
-		{
-			return Name;
-		}
 
 		private const int MaxProductsInBasket = 10;
 

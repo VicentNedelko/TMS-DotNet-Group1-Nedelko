@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TeachMeSkills.Simulator.Core.Enums
 {
-    public enum Name
+    public enum ProductName
     {
         Product1 = 0,
         Product2 = 1,
