@@ -9,18 +9,12 @@ namespace TeachMeSkills.Simulator.Core
     public class Product
     {
         public ProductName Name { get; set; }
-
         public decimal Price { get; set; }
-
-        public int Count { get; set; }
-
 
         public Product()
         {
             var random = new Random();
-
             Price = (decimal)random.NextDouble() * 10;
-
             switch (random.Next(1, 10))
             {
                 case 1:
