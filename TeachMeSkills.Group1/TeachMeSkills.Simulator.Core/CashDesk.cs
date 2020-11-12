@@ -13,7 +13,6 @@ namespace TeachMeSkills.Simulator.Core
         public Queue<Customer> cashDeskQueue { get; set; }
         public List<TimeSpan> servingTime { get; set; }
         private static Semaphore semaphore = new Semaphore(0, 5);
-        private int _count;
         public CashDesk()
         {
             Thread thread = new Thread(Service);
@@ -47,6 +46,7 @@ namespace TeachMeSkills.Simulator.Core
                 }
                 else
                 {
+                    Console.WriteLine("Cash Desk waiting for a new Customer...");
                     Thread.Sleep(1000);
                 }
             }
