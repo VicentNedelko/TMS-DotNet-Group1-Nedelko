@@ -54,9 +54,28 @@ namespace TeachMeSkills.Simulator.Cons
                     Thread.Sleep(1000);
                 }
             }
+            Console.WriteLine("-------");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Common Queue is empty.");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("-------");
             Console.WriteLine();
-            Console.WriteLine("---------");
+
+            // Wait for EVERY Thread finished.
+
+            for (int cd = 0; cd < cashDeskNumber; cd++)
+            {
+                if (cashDeskManager.cashDeskList[cd].cashDeskThread.IsAlive)
+                {
+                    cashDeskManager.cashDeskList[cd].cashDeskThread.Join();
+                }
+            }
+
+            foreach (var cashDesk in cashDeskManager.cashDeskList)
+            {
+                Console.WriteLine($"Served Customer by Cash Desk" +
+                    $"{cashDesk.servingTime.Count}");
+            }
 
 
             // Internal method
