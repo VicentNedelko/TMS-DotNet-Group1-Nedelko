@@ -71,10 +71,23 @@ namespace TeachMeSkills.Simulator.Cons
                 }
             }
 
-            foreach (var cashDesk in cashDeskManager.cashDeskList)
+            for(int cd = 0; cd < cashDeskNumber; cd++)
             {
-                Console.WriteLine($"Served Customer by Cash Desk" +
-                    $"{cashDesk.servingTime.Count}");
+                Console.WriteLine($"Served Customer by Cash Desk [{cd + 1}] - " +
+                    $"{cashDeskManager.cashDeskList[cd].servingTime.Count}");
+            }
+
+            // Get Average bill for Cash Desk
+            Console.WriteLine("-------");
+            foreach(CashDesk cashDesk in cashDeskManager.cashDeskList)
+            {
+                Console.WriteLine("Cash Desk statistics : ");
+                List<decimal> averageSum = new List<decimal>();
+                foreach(Customer customer in cashDesk.customerServed)
+                {
+                    averageSum.Add(customer.Basket.Average(b => b.Price));
+                }
+                Console.WriteLine($"Average Sum - {averageSum.Average():0.00}");
             }
 
 

@@ -11,6 +11,7 @@ namespace TeachMeSkills.Simulator.Core
         public Speed Speed { get; set; }
         public int maxCustomerNumber { get; set; }
         public Queue<Customer> cashDeskQueue { get; set; }
+        public List<Customer> customerServed { get; set; }
         public Thread cashDeskThread { get; set; }
         private static Semaphore semaphore = new Semaphore(0, 5);
         public List<TimeSpan> servingTime { get; set; }
@@ -18,6 +19,7 @@ namespace TeachMeSkills.Simulator.Core
         {
             cashDeskQueue = new Queue<Customer>();
             servingTime = new List<TimeSpan>();
+            customerServed = new List<Customer>();
             switch (new Random().Next(1, 3))
             {
                 case 1:
@@ -45,7 +47,7 @@ namespace TeachMeSkills.Simulator.Core
                     finishTime = DateTime.Now;
                     servingTime.Add(finishTime - startTime);
                     Console.WriteLine($"Customer served in {(finishTime - startTime).TotalSeconds} sec");
-                    cashDeskQueue.Dequeue();
+                    customerServed.Add(cashDeskQueue.Dequeue());
                 }
                 else
                 {
