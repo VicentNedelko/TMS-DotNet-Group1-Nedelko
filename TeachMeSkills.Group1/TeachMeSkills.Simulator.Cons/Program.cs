@@ -18,6 +18,8 @@ namespace TeachMeSkills.Simulator.Cons
             CashDeskManager cashDeskManager =
                 new CashDeskManager(cashDeskNumber);
             CustomerManager customerManager = new CustomerManager();
+            Console.Write("Enter Customer number : ");
+            customerManager.maxCustomerNumber = int.Parse(Console.ReadLine());
             customerManager.commonQueueThread.Start();
 
             // Make a short pause to generate Customers in common Queue
@@ -42,6 +44,7 @@ namespace TeachMeSkills.Simulator.Cons
                 {
                     cashDeskManager.cashDeskList[GetShortestQueue()].
                         cashDeskQueue.Enqueue(customerManager.commonQueue.Dequeue());
+
                     for (int c = 0; c < cashDeskManager.cashDeskList.Count; c++)
                     {
                         cashDeskManager.cashDeskList[c].maxCustomerNumber
@@ -79,15 +82,31 @@ namespace TeachMeSkills.Simulator.Cons
 
             // Get Average bill for Cash Desk
             Console.WriteLine("-------");
+            int desk = 0;
             foreach(CashDesk cashDesk in cashDeskManager.cashDeskList)
             {
-                Console.WriteLine("Cash Desk statistics : ");
-                List<decimal> averageSum = new List<decimal>();
-                foreach(Customer customer in cashDesk.customerServed)
+                desk++;
+                Console.Write($"Cash Desk [{desk}] statistics : ");
+                //List<decimal> averageSum = new List<decimal>();
+                List<decimal> purchaseSum = new List<decimal>();
+                if (cashDesk.customerServed.Count != 0)
                 {
-                    averageSum.Add(customer.Basket.Average(b => b.Price));
+                    foreach (Customer customer in cashDesk.customerServed)
+                    {
+                        //averageSum.Add(customer.Basket.Average(b => b.Price));
+                        purchaseSum.Add(customer.Basket.Sum(b => b.Price));
+                    }
+                    Console.Write($"Average Sum - {purchaseSum.Average():0.00}; ");
+                    Console.Write($"Sum purchase - " +
+                        $"{purchaseSum.Sum():00.00} BYN; ");
+                    Console.WriteLine($"Max purchase - {purchaseSum.Max():00.00} BYN;");
                 }
-                Console.WriteLine($"Average Sum - {averageSum.Average():0.00}");
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("NO Customer served.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
 
 

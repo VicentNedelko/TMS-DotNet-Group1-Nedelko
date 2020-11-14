@@ -8,6 +8,7 @@ namespace TeachMeSkills.Simulator.Core
 {
     public class CashDesk
     {
+        static object locker = new object();
         public Speed Speed { get; set; }
         public int maxCustomerNumber { get; set; }
         public Queue<Customer> cashDeskQueue { get; set; }
@@ -44,10 +45,16 @@ namespace TeachMeSkills.Simulator.Core
                 {
                     startTime = DateTime.Now;
                     Thread.Sleep(cashDeskQueue.Peek().Basket.Count * 1000);
-                    finishTime = DateTime.Now;
-                    servingTime.Add(finishTime - startTime);
-                    Console.WriteLine($"Customer served in {(finishTime - startTime).TotalSeconds} sec");
-                    customerServed.Add(cashDeskQueue.Dequeue());
+                    cashDeskQueue.Peek().PrintCustomerInfo(); // Print cheque to be served
+                    lock (locker)
+                    {
+                            Console.WriteLine("++++++++++++");
+                            finishTime = DateTime.Now;
+                            servingTime.Add(finishTime - startTime);
+                            Console.WriteLine($"Customer served in {(finishTime - startTime).TotalSeconds} sec");
+                            customerServed.Add(cashDeskQueue.Dequeue());
+                            Console.WriteLine("++++++++++++");
+                    }
                 }
                 else
                 {

@@ -24,7 +24,7 @@ namespace TeachMeSkills.Simulator.Core.Managers
             {
                 Thread.Sleep(rand.Next(1000, 3000));
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("New Customer generated.");
+                Console.WriteLine("New Customer added.");
                 Console.ForegroundColor = ConsoleColor.White;
                 commonQueue.Enqueue(new Customer());
                 maxCustomerNumber--;
